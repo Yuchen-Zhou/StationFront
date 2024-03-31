@@ -1,15 +1,14 @@
-import './assets/main.css'
-
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import App from './App.vue'
 import router from './router'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-import echarts from 'echarts'
-Vue.prototype.$echarts = echarts
 
 
 const app = createApp(App)
+
+// 将 echarts 注册为全局属性
+
 
 app.use(router)
 app.use(ElementPlus)

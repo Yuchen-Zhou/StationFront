@@ -17,7 +17,7 @@ const router = createRouter({
     {
       path: '/dashboard',
       name: 'dashboard',
-      // component:
+      component: () => import('../views/dashboard/DashboardView.vue')
     },
     {
       path: '/login',
@@ -34,11 +34,7 @@ const router = createRouter({
       name: 'reset',
       component: () => import('../views/user/ResetView.vue')
     },
-    {
-      path: '/dashboard',
-      name: 'dashboard',
-      component: () => import('../views/dashboard/DashboardView.vue')
-    }
+   
   ]
 })
 

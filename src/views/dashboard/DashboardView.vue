@@ -1,6 +1,21 @@
 <script setup>
+import { ref, onMounted} from "vue";
 import SideBar from "@/components/dashboard/SideBar.vue";
 import UserStorage from "@/components/dashboard/UserStorage.vue";
+import axios from "axios";
+
+const isLoggedIn = ref(false); // 标志用户是否已登录
+
+
+onMounted(async () => {
+  try {
+    // 发送请求给后端验证用户登录状态
+    const response = await axios.get('http://127.0.0.1:8008/api/check-login');
+    isLoggedIn.value = response.data.isLoggedIn; // 根据后端返回的数据更新登录状态
+  } catch (error) {
+    console.error('验证登录状态失败', error);
+  }
+});
 </script>
 
 <template>
@@ -12,7 +27,7 @@ import UserStorage from "@/components/dashboard/UserStorage.vue";
       <el-main>
         <img src="@/assets/imgs/dashboard.png" class="img-background">
 
-        <UserStorage/>
+         <UserStorage/>
       </el-main>
     </el-container>
   </div>
